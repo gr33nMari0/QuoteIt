@@ -1,0 +1,61 @@
+<%- include('../partials/open') %>
+<div class="content">
+    <div class="show">
+        <h1>Quote Details</h1>
+        <h3>
+            <% if (quote.author.length === 1) { %> 
+                Quote by <%= quote.author %>
+            <% } else { %>
+                <% authorString = quote.author.join(", ") %>
+                Quote by multiple authors: <%= authorString %> 
+            <% } %>
+        </h3>
+        <ul>
+            <li>Quote: <%= quote.quote%></li>
+            
+            <% if (quote.author.length === 1) { %> 
+                <li>Author: <a href="/quotes?author=<%= quote.author %>"><%= quote.author %></a></li>
+            <% } else { %>
+                <li>Authors:
+                    <ul> 
+                    <% for (let author of quote.author) { %> 
+                        <li><a href="/quotes?author=<%=  %>"><%= author %></a></li>
+                    <% } %>
+                    </ul>
+                </li>
+            <% } %>
+            
+
+            <!-- Handle Date (If available) -->
+            <% if(quote.date){ %>
+                <li>Date Added: <%= quote.date %></li>
+            <% } else { %>
+                <li>Date Added: <i>n/a</i></li>
+            <% } %>
+            
+            <!-- Handle Multiple Tags -->
+            <% if(quote.tags.length !== 0){ %>
+                <% if (quote.tags.length === 1) { %> 
+                    <li>Tags: <a href="/quotes?tags=<%= quote.tags %>"><%= quote.tags %></a></li>
+                <% } else { %>
+                    <li>Tags:
+                        <ul> 
+                        <% for (let tag of quote.tags) { %> 
+                            <li><a href="/quotes?tags=<%= tag %>"><%= tag %></a></li>
+                        <% } %>
+                        </ul>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li>Tags: <i>No Tags</i></li>
+            <% } %>
+            
+        </ul>
+        <a class="linkBtn all" href="/quotes">All Quotes</a>
+        <a class="linkBtn edit" href="/quotes/<%=quote._id%>/edit">Edit Quote</a>
+        <form action="/quotes/<%=quote._id%>?_method=DELETE" method="POST">
+            <button class="button">Delete</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/close') %>

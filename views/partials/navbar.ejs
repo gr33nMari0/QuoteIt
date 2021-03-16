@@ -1,0 +1,41 @@
+<header class="open">
+    <section id="branding">
+        <a href="/">
+            <h2>QuoteIt!</h2>
+        </a>
+        <p>Write down your favourites!</p>
+    </section>
+    <section id="searchBar">
+        <span class="fas fa-search searchMoved" id="searchIcon"></span>
+        <div class="search">
+            <div class="searchForm searchExpand">
+                <p>Search Quotes by:</p>
+                <form action="/quotes">
+                    <select name="author" id="selectAuthor" required>
+                        <% for(let selectAuthor of authors){ %>
+                        <option value="<%= selectAuthor %>"><%= selectAuthor %></option>
+                        <% } %>
+                    </select>
+                    <button type="submit">Go!</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <nav id="nav">
+        <a onclick="popup()">Info</a>
+        <a href="../quotes/new">New Quote</a>
+        <a href="../about">About</a>
+    </nav>
+    <a id="hamburgerBtn" href="javascript:void(0)" class="icon" onclick="openNav()"><span class="fas fa-bars"></span></a>
+</header>
+<div class="popup" id="popup">
+    <div class="popupOverlay"></div>
+    <div class="popupContent">
+        <div class="close-btn" onclick="popup()">&times;</div>
+        <h1>Hello from popup land!</h1>
+        <p>There's nothing here at the moment, but there will be soon! Check again later for new updates.</p>
+        <p>As a reward, you get a gold star!</p>
+        <img src="../../images/star.png" alt="You get a GOLD STAR!" onclick="alert('Congratulations on finding this easter egg!')">
+        <p>See you later!</p>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<%- include('../partials/open.ejs') %>
+<div class="content view">
+    <div class="quotesList">
+        <% if (author !== "") { %> 
+        <h1>Quotes by <%= author %>!</h1>
+        <% } else if (tags !== "") { %>
+        <h2>Quotes with the tag <%= tags %>!</h2>
+        <% } %> 
+        <ul>
+            <% for (let quote of quotes) { %>
+                <% if (quote.author.length > 1) { %>
+                    <% authorString = quote.author.join(", ") %>
+                    <li><a href="/quotes/<%=quote._id%>"><span id="quote"><%= `${quote.quote}` %></span><span id="author"><%= ` - ${authorString}` %></span></a></li>
+                <% } else { %> 
+                    <li><a href="/quotes/<%=quote._id%>"><span id="quote"><%= `${quote.quote}` %></span><span id="author"><%= ` - ${quote.author}` %> </span></a></li>
+                <% } %> 
+            <% }%>
+        </ul>
+    </div>
+    <div>
+        <a class="linkBtn new" href="/quotes/new">New Quote</a>
+        <%if(author !== 'Everyone') {%>
+            <a class="linkBtn back" href="/quotes">All Quotes</a>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/close') %>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> | QuoteIt! - Write down your favourites!</title>
+    <link rel="stylesheet" href="../../css/app.css">
+    <script src="../../js/app.js" defer></script>
+    <script src="https://kit.fontawesome.com/e47d0a96a9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/form.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="content">
+        <h1>Add A Quote</h1>
+        <form action="/quotes" method="POST">
+            <div class="container">
+                <label for="author">Quote Author:</label>
+                <input type="text" id="author" name="author" placeholder="Enter the Quote Author!" required>
+                <div class="side">
+                    <label>Date Added: <input type="text" id="date" name="date" placeholder="Enter a date! (Leave it blank for today's date)"></label>
+                    <label>Tags: <input type="text" id="tags" name="tags" placeholder="Enter Tags! e.g: Tag1, Tag2"></label>
+                </div>
+                <label for="quote">Quote:</label>
+                <textarea rows="10" cols="80"name="quote" id="quote" placeholder="Enter the Quote Text!" required
+                    style="vertical-align: top"></textarea>
+            </div>
+            <button class="button">Submit</button>
+        </form>
+        <div style="display: none" id="lookLike">
+            <h2 id="lookLike">This is what your quote will look like:</h2>
+            <p id="quotePreview"></p>
+        </div>
+        <a class="linkBtn back" href="/quotes/">Go Back</a>
+    </div>
+    <script src="../../js/new.js"></script>
+<%- include('../partials/close') %>

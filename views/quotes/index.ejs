@@ -1,0 +1,42 @@
+<%- include('../partials/open') %>
+<div class="content">
+    <h1>QuoteIt! Launchpad</h1>
+    <div class="launch">    
+        <div>
+            <p>View Quotes by Everyone:</p>
+            <a href="/quotes"><button class="smallButton next">Go</button></a>
+        </div>
+        <div>
+            <p>View Quotes by:</p>
+            <form action="/quotes">
+                <select name="author" id="author" required>
+                    <% for(let author of authors){ %>
+                    <option value="<%= author %>"><%=author%></option>
+                    <% } %>
+                </select>
+                <button class="smallButton next" type="submit">Go</button>
+            </form>
+        </div>
+        <div>
+            <p>View Quotes with the tag:</p>
+            <form action="/quotes">
+                <input type="text" name="tags" id="tags" placeholder="Enter a Tag!" required>
+                <button class="smallButton next" type="submit">Go</button>
+            </form>
+        </div>
+    </div>
+    <div class="howTo">
+        <div class="section">
+            <h2>What is QuoteIt!?</h2>
+            <p><strong>QuoteIt!</strong> is a super simple webapp made by Pete Woodhead that lets anyone record and store all of the quotes from the people around them!</p>
+            <h3>But how do I use it?</h3>
+            <p>To write new quotes, simply click on the "New Quote" Button up the top right and fill out the boxes! It's as simple as that!</p>
+        </div>
+        <div class="section">
+            <h2>Features</h2>
+            <p>QuoteIt! has a few little tricks up its' sleeve... such as <strong>organising your quotes with dates, tags,</strong> and <strong>authors</strong>!</p>
+            <p>And the best part: you can search for a quote by its' tags or authors, so you'll never lose a quote ever again :)</p>
+        </div>
+    </div>
+</div>
+<%- include('../partials/close') %>

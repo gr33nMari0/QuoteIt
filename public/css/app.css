@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+* {
+    font-family: Inter,sans-serif;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling for the Navigation Bar */
+.open {
+    /* background: rgba(0,0,0,0.02); */
+    border-bottom: 1px solid rgba(0,0,0,0.11);
+    width: auto;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.open section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.open h2 {
+    font-size: 24px;
+    background-color: white;
+    /* color: #7400b8; */
+}
+
+.open p {
+    margin: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    background-color: white;
+    /* color: #5e60ce; */
+}
+
+.open nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.open nav a {
+    margin: 4px;
+    width: 118px;
+    border: 1px solid rgba(0,0,0,0.11);
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: center;
+}
+
+.open nav a:hover {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.open a {
+    text-decoration: none;
+    color: black;
+}
+
+.open .icon {
+    border: 1px solid rgba(0,0,0,0.11);
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: center;
+    width: 50px;
+    display: none;
+}
+
+.open nav:last-child {
+    margin-right: 0;
+}
+
+/* Navbar Search */
+.open .searchBar {
+    /* background-color: rgba(0,0,0,0.05); */
+    height: 100%;
+    vertical-align: center;
+}
+.fa-search {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+.open .searchMoved {
+    transform: translate(160px, 0px);
+}
+.open .search {
+    transform: translate(80px, 0px) scale(0);
+    font-size: 1em;
+    transition: all 0.23s ease-in;
+}
+.open .searchExpand {
+    transform: translate(0px, 0px) scale(1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Popup Styling */
+.popup .popupOverlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 150vw;
+    height: 150vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+    display: none;
+    overflow: hidden;
+}
+
+.popup .popupContent {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:50vw;
+    max-width: 415px;
+    min-width: 300px;
+    height:30vh;
+    max-height: 480px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    border-radius: 20px;
+    box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.212);
+    overflow:hidden;
+}
+
+.popup .popupContent img {
+    width: 50px;
+}
+
+.popup h1 {
+    text-align: center;
+    font-size: max(3.5vw, 38px);
+    font-size: min(3.5vw, 26px);
+}
+.popup p {
+    font-size: max(1.5vw, 26px);
+    font-size: min(1.5vw, 16px);
+}
+.popup .close-btn {
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    color:#222;
+    font-size:25px;
+    font-weight:600;
+    line-height:25px;
+    text-align:center;
+    border-radius: 100%;
+    border: 1px solid rgba(0,0,0,0.11);
+    padding: 0;
+}
+
+.popupActive .popupOverlay {
+    display:block;
+    transition: all 1s ease-in-out;
+}
+
+.popupActive .popupContent {
+    transition: all 0.5s cubic-bezier(.25,0,.46,1.5);
+    transform:translate(-50%,-50%) scale(1);
+}
+
+
+
+/* Styling for all elements */
+h1 {
+    font-weight: 800;
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em; 
+}
+
+.button {
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.11);
+    background: none;
+    box-shadow: none;
+    outline: none;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.smallButton {
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.11);
+    background: none;
+    box-shadow: none;
+    outline: none;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.button:hover, .smallButton:hover {
+    background: rgba(0,0,0,0.03);
+    cursor: pointer;
+}
+
+.linkBtn {
+    text-decoration: none;
+    color: black;
+    padding: 8px 20px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.11);
+    background: none;
+    box-shadow: none;
+    outline: none;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.linkBtn:hover {
+    cursor: pointer;
+}
+.back::before {
+    content: "<- "
+}
+.next::after {
+    content: " ->"
+}
+
+/* Styling for all Pages */
+.content {
+    margin: 0 20px;
+}
+
+.quotesList {
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.launch {
+    display: flex;
+    flex-direction: column;
+}
+.launch div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.launch .smallButton, .launch select, .launch input {
+    margin: 0 10px;
+}
+
+.launch {
+    border-bottom: 1px solid rgba(0,0,0,0.11);
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.howTo .section {
+    margin-bottom: 60px;
+}
+
+
+
+/* Styling for the About Page */
+.about article {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.view ul {
+    margin: 0;
+    padding: 0;
+}
+
+.view li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.view li a {
+    text-decoration: none;
+    color: black;
+}
+
+.view li #quote:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.view #author {
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: default;
+}
+
+.view section {
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+#quote::before {
+    content: '“';
+}
+#quote::after {
+    content: '”';
+}
+
+
+
+/* ========= Footer Navbar ========= */
+.close {
+    background: rgba(0,0,0,0.02);
+    border-top: 1px solid rgba(0,0,0,0.11);
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:relative;
+    bottom: 0px;
+    width: 100%;
+}
+
+.close section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close h2 {
+    font-size: 24px;
+}
+
+.close p {
+    margin: 20px;
+    font-weight: 300;
+    font-size: 20px;
+}
+.close nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close nav a {
+    margin: 10px;
+    border: 1px solid rgba(0,0,0,0.11);
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+}
+
+.close nav a:hover {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.close a {
+    text-decoration: none;
+    color: black;
+}
+
+
+@media screen and (max-width: 1200px) {
+    #searchBar {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 810px) {
+    .open nav a {
+        display: none;
+    }
+    .open .icon {
+        display: block;
+        top: 5px;
+        right: 5px;
+    }
+    .open {
+        padding-right: 5px;
+    }
+
+    /* All this happens AFTER Script! */
+    .active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        background-color:rgba(0, 0, 0, 0.212);
+    }
+    .unHide {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    #branding p {
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 415px) {
+    #branding p {
+        font-size: 0.75em;
+    }
+}
+@media screen and (max-width: 365px) {
+    #branding p {
+        font-size: 0.6em;
+    }
+}
+@media screen and (max-width: 333px) {
+    #branding p {
+        font-size: 0.45em;
+    }
+}

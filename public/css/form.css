@@ -1,0 +1,50 @@
+.hidden {
+    display: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.container form {
+    width: 100%;
+}
+.container input, .container select, .container textarea {
+    width: 100%;
+    height: 36px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.11);
+    background: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.container textarea {
+    width: 100%;
+    height: 5em;
+    margin-bottom: 20px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.container select option:last-child {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.side {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+.side label {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+.side label:first-child {
+    margin-right: 5px;
+}

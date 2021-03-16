@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> | QuoteIt! - Write down your favourites!</title>
+    <link rel="stylesheet" href="../../css/app.css">
+    <script src="../../js/app.js" defer></script>
+    <script src="https://kit.fontawesome.com/e47d0a96a9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/form.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="content">
+        <h1>Edit Quote</h1>
+        <form action="/quotes/<%= quote._id %>?_method=PUT" method="POST">
+            <div class="container">
+                <label for="author">Quote Author:</label>
+                
+                <% if(quote.author.length === 1) { %>
+                    <select name="author" id="author">
+                        <% authors.push("New Author") %> 
+                        <% for(let author of authors){ %>
+                        
+                            <% if (quote.author === author){ %> 
+                                <option value="<%=author%>" selected><%=author%></option>
+                            <% } else { %> 
+                                <option value="<%=author%>"><%=author%></option>
+                            <% } %> 
+                        <% } %>
+                    </select>
+                <% } else { %> 
+                    <input type="text" id="author" name="author" placeholder="Quote Author" value="<%= quote.author.join(", ") %>" required>
+                <% } %> 
+                
+                <label class="newAuthorInput hidden" for="newAuthor">New Quote Author:</label>
+                <input class="newAuthorInput hidden" type="text" id="newAuthor" name="newAuthor" placeholder="Enter a new Quote Author!">
+                
+                <div class="side">
+                    <label>Date Added: <input type="text" id="date" name="date" value="<%= quote.date %> " placeholder="Enter a date!"></label>
+                    <label>Tags: <input type="text" id="tags" name="tags" value="<%= quote.tags  %> " placeholder="Enter Tags! e.g: Tag1, Tag2"></label>
+                </div>
+                <label for="quote">Quote:</label>
+                <textarea name="quote" id="quote" placeholder="Quote Text" required
+                    style="vertical-align: top"><%=quote.quote%></textarea>
+                <button class="button">Submit</button>
+            </div>
+        </form>
+        <a class="linkBtn back" href="/quotes/<%=quote._id%>">Cancel</a>
+    </div>
+    <script src="../../js/edit.js"></script>
+<%- include('../partials/close') %>
