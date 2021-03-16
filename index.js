@@ -157,6 +157,6 @@ app.delete('/quotes/:id', async (req, res) => {
     res.redirect('/quotes');
 })
 
-app.listen(port, localIPAddress, () => {
+app.listen(port, () => {
     console.log(`App is listening on Localhost and IP Address ${localIPAddress}, on port ${port}.`)
 })
