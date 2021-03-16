@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 // const activeDB = "Quote";
 
-const Quote = require(`./models/QuotesModel`);
+const Quote = require(`./models/quotesModel`);
 
 
 mongoose.connect('mongodb://localhost:27017/quoteIt', { useNewUrlParser: true, useUnifiedTopology: true })
