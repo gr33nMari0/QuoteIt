@@ -1,0 +1,26 @@
+<%- include('../partials/open.ejs') %>
+<div class="content view">
+    <div class="quotesList">
+        <h1>Search  QuoteIt!</h1>
+        <form action="javascript:void(0)">
+            <input type="text">
+        </form>
+        <ul>
+            <% for (let quote of quotes) { %>
+                <% if (quote.author.length > 1) { %>
+                    <% authorString = quote.author.join(", ") %>
+                    <li><a href="/quotes/<%=quote._id%>"><span id="quote"><%= `${quote.quote}` %></span><span id="author"><%= ` - ${authorString}` %></span></a></li>
+                <% } else { %> 
+                    <li><a href="/quotes/<%=quote._id%>"><span id="quote"><%= `${quote.quote}` %></span><span id="author"><%= ` - ${quote.author}` %> </span></a></li>
+                <% } %> 
+            <% }%>
+        </ul>
+    </div>
+    <div>
+        <a class="linkBtn new" href="/quotes/new">New Quote</a>
+        <%if(author !== 'Everyone') {%>
+            <a class="linkBtn back" href="/quotes">All Quotes</a>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/close') %>

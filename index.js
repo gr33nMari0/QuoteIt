@@ -2,15 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 80;
-const localIPAddress = "192.168.1.11";
+const localIPAddress = "192.168.121.21";
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 // const activeDB = "Quote";
 
-const Quote = require(`./models/quotesModel`);
+const Quote = require(`./models/SSCQuotesModel`);
 
+const mongoString = "mongodb+srv://petepete_repeat:mindstorms@cluster0.ndgjy.mongodb.net/quoteIt?retryWrites=true&w=majority";
+// const mongoString = "mongodb://localhost:27017/quoteIt"
 
-mongoose.connect('mongodb://localhost:27017/quoteIt', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -85,6 +87,12 @@ app.get('/quotes/new', async (req, res) => {
     res.render('quotes/new', { pageTitle, authors })
 })
 
+app.get('/quotes/search', async (req, res) => {
+    const authors = await updateAuthors();
+    const pageTitle = "New Quote";
+    res.render('quotes/search', { pageTitle, authors })
+})
+
 app.post('/quotes', async (req, res) => {
     // console.log("Post request received")
     const authors = await updateAuthors();
@@ -157,6 +165,6 @@ app.delete('/quotes/:id', async (req, res) => {
     res.redirect('/quotes');
 })
 
-app.listen(port, () => {
+app.listen(port, localIPAddress, () => {
     console.log(`App is listening on Localhost and IP Address ${localIPAddress}, on port ${port}.`)
 })
