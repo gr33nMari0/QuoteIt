@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 80;
+const PORT = 80;
 const localIPAddress = "192.168.121.21";
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -165,6 +165,6 @@ app.delete('/quotes/:id', async (req, res) => {
     res.redirect('/quotes');
 })
 
-app.listen(port, localIPAddress, () => {
+app.listen(PORT, () => {
     console.log(`App is listening on Localhost and IP Address ${localIPAddress}, on port ${port}.`)
 })
