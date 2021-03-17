@@ -4,7 +4,8 @@
   "description": "A simple website to fill in your quotes!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Pete Woodhead",
   "license": "ISC",
@@ -13,6 +14,5 @@
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.0"
-  },
-  "scripts": {"start": "node index.js"}
+  }
 }
