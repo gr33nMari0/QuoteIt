@@ -1,4 +1,6 @@
 # QuoteIt
+## Link to QuoteIt: http://quoteit.club/
+
 ## What is QuoteIt!?
 QuoteIt! is a super simple webapp I made that lets anyone record and store all of the quotes from the people around them!
 
