@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -9,8 +12,7 @@ const methodOverride = require('method-override');
 
 const Quote = require(`./models/SSCQuotesModel`);
 
-const mongoString = "mongodb+srv://petepete_repeat:mindstorms@cluster0.ndgjy.mongodb.net/quoteIt?retryWrites=true&w=majority";
-// const mongoString = "mongodb://localhost:27017/quoteIt"
+const mongoString = process.env.MONGODB_ATLAS_KEY;
 
 mongoose.connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
