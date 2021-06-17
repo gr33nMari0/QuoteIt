@@ -10,6 +10,7 @@ To write new quotes, simply click on the "New Quote" Button up the top right and
 QuoteIt! has a few little tricks up its' sleeve... such as organising your quotes with dates, tags, and authors!
 
 And the best part: you can search for a quote by its' tags or authors, so you'll never lose a quote ever again :)
+## NEW - API Route has been added: http://quoteit.club/api/random/
 
 ## The Goal
 This project was designed with one goal in mind: to give anyone an clean and simple place to write down quotes from the people in their lives.
