@@ -95,6 +95,24 @@ app.get('/api/random', async (req, res) => {
     res.send(newQuoteObject)
 })
 
+app.get('/api/:num', async (req, res) => {
+    const num = req.params.num;
+    const authors = await updateAuthors();
+    const { author, tags } = req.query;
+    const quotes = await Quote.find({})
+    const manyQuotes = []
+    while (manyQuotes.length < num) {
+        let quoteObject = quotes[Math.floor(Math.random() * quotes.length)];
+
+        console.log(manyQuotes)
+
+        manyQuotes.push({
+            quote: `${quoteObject.quote} - ${quoteObject.author}`
+        })
+    }
+    res.send(manyQuotes)
+})
+
 app.get('/quotes/new', async (req, res) => {
     const authors = await updateAuthors();
     const pageTitle = "New Quote";
