@@ -83,6 +83,18 @@ app.get('/quotes', async (req, res) => {
     }
 })
 
+app.get('/api/random', async (req, res) => {
+    const authors = await updateAuthors();
+    const { author, tags } = req.query;
+    const quotes = await Quote.find({})
+    let quoteObject = quotes[Math.floor(Math.random() * quotes.length)];
+    const newQuoteObject = {
+        quoteString: `${quoteObject.quote} - ${quoteObject.author}`,
+        originalQuoteObject: quoteObject
+    }
+    res.send(newQuoteObject)
+})
+
 app.get('/quotes/new', async (req, res) => {
     const authors = await updateAuthors();
     const pageTitle = "New Quote";
@@ -115,16 +127,17 @@ app.post('/quotes', async (req, res) => {
     // Handle date
     if (req.body.date === "") {
         let now = new Date();
-        req.body.date = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+        req.body.date = `${now.getDate()
+            }/${now.getMonth() + 1}/${now.getFullYear()}`;
     }
     if (req.body.date.toLowerCase() === "today") {
         let now = new Date();
-        req.body.date = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+        req.body.date = `${now.getDate()} / ${now.getMonth() + 1} / ${now.getFullYear()}`;
     }
     const newQuote = new Quote(responseBody);
     await newQuote.save();
     // console.log(newQuote._id)
-    res.redirect(`/quotes/${newQuote._id}`)
+    res.redirect(`/ quotes / ${newQuote._id}`)
 })
 
 app.get('/quotes/:id', async (req, res) => {
@@ -158,7 +171,7 @@ app.put('/quotes/:id', async (req, res) => {
     }
     const { id } = req.params;
     const quote = await Quote.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    res.redirect(`/quotes/${quote._id}`);
+    res.redirect(`/ quotes / ${quote._id}`);
 })
 
 app.delete('/quotes/:id', async (req, res) => {
